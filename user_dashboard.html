@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOK CONTROL - Painel do Usuário</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        .bg-custom-blue { background-color: #1e40af; }
+        .bg-custom-yellow { background-color: #f59e0b; }
+        .bg-custom-green { background-color: #10b981; }
+        .text-custom-blue { color: #1e40af; }
+        .text-custom-yellow { color: #f59e0b; }
+        .text-custom-green { color: #10b981; }
+        .border-custom-blue { border-color: #1e40af; }
+        .border-custom-yellow { border-color: #f59e0b; }
+        .border-custom-green { border-color: #10b981; }
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+    <header class="bg-custom-blue text-white py-4 shadow-md">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold flex items-center">
+                <i data-feather="book" class="mr-2"></i> Biblioteca Digital
+            </h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="user_books.html" class="hover:text-custom-yellow transition flex items-center">
+                        <i data-feather="book-open" class="mr-1"></i> Livros
+                    </a></li>
+                    <li><a href="user_loans.html" class="hover:text-custom-yellow transition flex items-center">
+                        <i data-feather="clock" class="mr-1"></i> Empréstimos
+                    </a></li>
+                    <li><a href="#" class="hover:text-custom-yellow transition flex items-center">
+                        <i data-feather="user" class="mr-1"></i> Perfil
+                    </a></li>
+                    <li><a href="index.html" class="hover:text-custom-yellow transition flex items-center">
+                        <i data-feather="log-out" class="mr-1"></i> Sair
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow py-8">
+        <div class="container mx-auto px-4">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-custom-blue">Bem-vindo, Usuário!</h2>
+                <p class="text-gray-600 mt-2">Aqui estão seus livros emprestados e recomendações</p>
+            </div>
+
+            <div class="mb-12">
+                <h3 class="text-xl font-semibold text-custom-blue mb-4 flex items-center">
+                    <i data-feather="clock" class="mr-2"></i> Seus Empréstimos Ativos
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-lg shadow-md p-4 border-l-4 border-custom-yellow">
+                        <div class="flex items-start">
+                            <img src="http://static.photos/books/200x200/1" alt="Capa do Livro" class="w-16 h-24 object-cover rounded">
+                            <div class="ml-4">
+                                <h4 class="font-semibold">A Revolução dos Bichos</h4>
+                                <p class="text-sm text-gray-600">George Orwell</p>
+                                <p class="text-xs text-gray-500 mt-2">Data de devolução: 15/10/2023</p>
+                                <span class="inline-block mt-1 px-2 py-1 text-xs bg-custom-yellow text-white rounded-full">5 dias restantes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold text-custom-blue mb-4 flex items-center">
+                    <i data-feather="book-open" class="mr-2"></i> Recomendações para Você
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <div class="book-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                        <img src="http://static.photos/books/200x200/2" alt="Capa do Livro" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-semibold text-sm">1984</h4>
+                            <p class="text-xs text-gray-600">George Orwell</p>
+                            <p class="text-xs text-gray-500 mt-1">Publicado: 1949</p>
+                            <button class="mt-2 w-full py-1 bg-custom-blue text-white text-xs rounded hover:bg-blue-700 transition">
+                                Emprestar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="book-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                        <img src="http://static.photos/books/200x200/3" alt="Capa do Livro" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-semibold text-sm">O Senhor dos Anéis</h4>
+                            <p class="text-xs text-gray-600">J.R.R. Tolkien</p>
+                            <p class="text-xs text-gray-500 mt-1">Publicado: 1954</p>
+                            <button class="mt-2 w-full py-1 bg-custom-blue text-white text-xs rounded hover:bg-blue-700 transition">
+                                Emprestar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="book-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                        <img src="http://static.photos/books/200x200/4" alt="Capa do Livro" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-semibold text-sm">Dom Quixote</h4>
+                            <p class="text-xs text-gray-600">Miguel de Cervantes</p>
+                            <p class="text-xs text-gray-500 mt-1">Publicado: 1605</p>
+                            <button class="mt-2 w-full py-1 bg-custom-blue text-white text-xs rounded hover:bg-blue-700 transition">
+                                Emprestar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="book-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                        <img src="http://static.photos/books/200x200/5" alt="Capa do Livro" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-semibold text-sm">Cem Anos de Solidão</h4>
+                            <p class="text-xs text-gray-600">Gabriel García Márquez</p>
+                            <p class="text-xs text-gray-500 mt-1">Publicado: 1967</p>
+                            <button class="mt-2 w-full py-1 bg-custom-blue text-white text-xs rounded hover:bg-blue-700 transition">
+                                Emprestar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="book-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                        <img src="http://static.photos/books/200x200/6" alt="Capa do Livro" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-semibold text-sm">Orgulho e Preconceito</h4>
+                            <p class="text-xs text-gray-600">Jane Austen</p>
+                            <p class="text-xs text-gray-500 mt-1">Publicado: 1813</p>
+                            <button class="mt-2 w-full py-1 bg-custom-blue text-white text-xs rounded hover:bg-blue-700 transition">
+                                Emprestar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-100 py-6">
+        <div class="container mx-auto px-4 text-center text-gray-600">
+            <p>© 2023 Biblioteca Digital. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init();
+        feather.replace();
+    </script>
+</body>
+</html>

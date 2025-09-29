@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Digital - Painel do Administrador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        .bg-custom-blue { background-color: #1e40af; }
+        .bg-custom-yellow { background-color: #f59e0b; }
+        .bg-custom-green { background-color: #10b981; }
+        .text-custom-blue { color: #1e40af; }
+        .text-custom-yellow { color: #f59e0b; }
+        .text-custom-green { color: #10b981; }
+        .border-custom-blue { border-color: #1e40af; }
+        .border-custom-yellow { border-color: #f59e0b; }
+        .border-custom-green { border-color: #10b981; }
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+    <header class="bg-custom-blue text-white py-4 shadow-md">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold flex items-center">
+                <i data-feather="book" class="mr-2"></i> Biblioteca Digital
+            </h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="admin_books.html" class="hover:text-custom-yellow transition flex items-center">
+                        <i data-feather="book-open" class="mr-1"></i> Livros
+                    </a></li>
+                    <li><a href="admin_loans.html" class="hover:text-custom-yellow transition flex items-center">
+                        <i data-feather="clock" class="mr-1"></i> Empréstimos
+                    </a></li>
+                    <li><a href="admin_users.html" class="hover:text-custom-yellow transition flex items-center">
+                        <i data-feather="users" class="mr-1"></i> Usuários
+                    </a></li>
+                    <li><a href="index.html" class="hover:text-custom-yellow transition flex items-center">
+                        <i data-feather="log-out" class="mr-1"></i> Sair
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow py-8">
+        <div class="container mx-auto px-4">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-custom-blue">Painel de Administração</h2>
+                <p class="text-gray-600 mt-2">Gerencie livros, empréstimos e usuários do sistema</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-custom-green">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-green-100 text-custom-green">
+                            <i data-feather="book" class="w-6 h-6"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-gray-700">Total de Livros</h3>
+                            <p class="text-2xl font-bold">1,248</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-custom-yellow">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-yellow-100 text-custom-yellow">
+                            <i data-feather="clock" class="w-6 h-6"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-gray-700">Empréstimos Ativos</h3>
+                            <p class="text-2xl font-bold">327</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-custom-blue">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-blue-100 text-custom-blue">
+                            <i data-feather="users" class="w-6 h-6"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-gray-700">Usuários Registrados</h3>
+                            <p class="text-2xl font-bold">586</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-custom-blue mb-4 flex items-center">
+                    <i data-feather="alert-triangle" class="mr-2"></i> Empréstimos Atrasados
+                </h3>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Livro</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Usuário</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data Devolução</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dias Atraso</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 h-10 w-10">
+                                            <img src="http://static.photos/books/200x200/7" alt="" class="h-10 w-10 rounded-full">
+                                        </div>
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-gray-900">O Pequeno Príncipe</div>
+                                            <div class="text-sm text-gray-500">Antoine de Saint-Exupéry</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">Maria Silva</div>
+                                    <div class="text-sm text-gray-500">maria@email.com</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    05/10/2023
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                        8 dias
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <button class="text-custom-blue hover:text-blue-700 mr-3">Enviar lembrete</button>
+                                    <button class="text-custom-green hover:text-green-700">Renovar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold text-custom-blue mb-4 flex items-center">
+                    <i data-feather="plus-circle" class="mr-2"></i> Adicionar Novo Livro
+                </h3>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Título do Livro</label>
+                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-custom-blue focus:border-custom-blue">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Autor</label>
+                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-custom-blue focus:border-custom-blue">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Ano de Publicação</label>
+                                <input type="number" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-custom-blue focus:border-custom-blue">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Prazo de Empréstimo (dias)</label>
+                                <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-custom-blue focus:border-custom-blue">
+                                    <option>05 dias</option>
+                                    <option>06 dias</option>
+                                    <option>07 dias</option>
+                                    <option>08 dias</option>
+                                    <option>09 dias</option>
+                                    <option>10 dias</option>
+                                    <option>11 dias</option>
+                                    <option>12 dias</option>
+                                    <option>13 dias</option>
+                                    <option>14 dias</option>
+                                    <option>15 dias</option>
+                                </select>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Descrição</label>
+                                <textarea rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-custom-blue focus:border-custom-blue"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Capa do Livro</label>
+                                <div class="mt-1 flex items-center">
+                                    <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                                        <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                        </svg>
+                                    </span>
+                                    <button type="button" class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom-blue">
+                                        Alterar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="md:col-span-2 flex justify-end">
+                                <button type="submit" class="px-4 py-2 bg-custom-green text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom-green transition">
+                                    Adicionar Livro
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-100 py-6">
+        <div class="container mx-auto px-4 text-center text-gray-600">
+            <p>© 2025 Biblioteca Digital. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init();
+        feather.replace();
+    </script>
+</body>
+</html>
